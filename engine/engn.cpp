@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class engine
+class Engine
 {
 public:
    virtual double GetEfficiency() const 
@@ -11,12 +11,12 @@ public:
 
 };
 
-              class InternalCombustionEngine : public engine 
+              class InternalCombustionEngine : public Engine 
                {
    
                 };
 
-              class ExternalCombustionEngine : public engine
+              class ExternalCombustionEngine : public Engine
                   {
     
                  };
@@ -54,32 +54,32 @@ public:
 
 int main()
 {
- 
-    int choise;
-    PetrolEngine petrolEngine;
-    DieselEngine dieselEngine;
-    SteamEngine steamEngine;
 
+    int i;
+    Engine* engine;
     do{ 
         cout <<"1 Petrol Engine Efficiency "<< std::endl;
         cout << "2 Diesel Engine Efficiency: " << std::endl;
         cout << "3 Steam Engine Efficiency: "<< std::endl;
         cout << "4 exit"<< std::endl;
         cout << "enter choise :";
+         cin>>i;
 
-        cin>>choise;
 
-    if(choise==1)
+    if(i==1)
     {
-        cout << "Petrol Engine Efficiency: " << petrolEngine.GetEfficiency() << endl;
+      engine = new PetrolEngine();
+        cout << "Petrol Engine Efficiency: " << engine->GetEfficiency() << endl;
     }
-    else if(choise==2)
+    else if(i==2)
     {
-        cout << "Diesel Engine Efficiency: " << dieselEngine.GetEfficiency() << endl;
+        engine = new DieselEngine();
+        cout << "Diesel Engine Efficiency: " <<engine->GetEfficiency() << endl;
     }
-    else if (choise==3)
+    else if (i==3)
     {
-        cout << "Steam Engine Efficiency: " << steamEngine.GetEfficiency() << endl;
+        engine = new SteamEngine();
+        cout << "Steam Engine Efficiency: " << engine->GetEfficiency() << endl;
     }
    
     else
@@ -89,9 +89,7 @@ int main()
 
 
 
-    }while(choise!=4);
-
-    
+    }while(i!=4);
 
     return 0;
 }
